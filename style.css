@@ -30,8 +30,14 @@ body {
     top: 328px;
     transform: rotateY(0deg) rotateX(59deg) rotateZ(-37deg);
 }
-.floor::before{
+
+.floor * {
+    transform-style: preserve-3d;
+}
+
+.floor::before {
     content: '';
+    pointer-events: none;
     position: absolute;
     /* inset: 0; */
     /* border: 5px solid yellow;
@@ -40,26 +46,77 @@ body {
     border-right-color: lime; */
     display: block;
     box-sizing: content-box;
-    
-    /* https://stackoverflow.com/questions/35361986/css-gradient-checkerboard-pattern */
-    background: repeating-conic-gradient(#1a19197e 0% 25%, transparent 0% 50%) 
-      50% / var(--cone) var(--cone);
-      width: inherit;
-      height: inherit;
-      left: 0;
-      top: 0;
-      transform: translateZ(-25px);
 
+    /* https://stackoverflow.com/questions/35361986/css-gradient-checkerboard-pattern */
+    background: repeating-conic-gradient(#1a19197e 0% 25%, transparent 0% 50%) 50% / var(--cone) var(--cone);
+
+    width: inherit;
+    height: inherit;
+    left: 0;
+    top: 0;
+    transform: translateZ(-35px);
+    opacity: 0.1;
 }
 
+.tiles {
+    position: absolute;
+    inset: 0;
+    transform: translateZ(-26px);
+    border-color: aquamarine;
+}
+
+.tiles i {
+    position: absolute;
+    --size: 50px;
+    --depth: 10px;
+    width: var(--size);
+    /* Lebar kubus */
+    height: var(--size);
+    /* Tinggi kubus */
+    background-color: #ececec;
+}
+
+.tiles i::before,
+.tiles i::after {
+    content: '';
+    display: block;
+    background-color: inherit;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+}
+
+/* left */
+.tiles i::before {
+    width: var(--depth);
+    transform-origin: left;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    transform: rotateY(90deg);
+}
+
+.tiles i::after {
+    height: var(--depth);
+    transform-origin: bottom;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+    bottom: 0;
+    transform: rotateX(90deg) ;
+}
+
+i[x="2"] {left: calc(var(--size) * 2)}
+i[x="3"] {left: calc(var(--size) * 3)}
+
+i[y="2"] {top: calc(var(--size) * 2)}
+i[y="3"] {top: calc(var(--size) * 3)}
 
 .cube {
     --size: 50px;
-    --half: calc( var(--size) / 2);
-    width:  var(--size); /* Lebar kubus */
-    height:  var(--size); /* Tinggi kubus */
+    --half: calc(var(--size) / 2 );
+    width: var(--size);
+    /* Lebar kubus */
+    height: var(--size);
+    /* Tinggi kubus */
     position: absolute;
-    transform-style: preserve-3d;
+    /* transform-style: preserve-3d; */
     transform-origin: 0.5 0.5 0.5;
     /* transform-origin: center; */
     transform: translate(0px, 0px) rotateX(0deg) rotateY(0deg);
@@ -70,8 +127,8 @@ body {
     position: absolute;
     width: var(--size);
     height: var(--size);
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #ccc;
+    background: #ececec;
+    /* border: 1px solid #ccc; */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     font-size: 15px;
     display: flex;
