@@ -28,7 +28,7 @@ function rollCube(axis, direction) {
             posY += direction * step; // Perpindahan vertikal berdasarkan sumbu X
         // }
     } else if (axis === 'y') {
-        angleY += 90 * direction;
+        angleY += 90 * direction *-1;
         // if (angleY % 360 === 0) {
             posX += direction * step; // Perpindahan horizontal berdasarkan sumbu Y
         // }

@@ -75,6 +75,9 @@ body {
     /* Tinggi kubus */
     background-color: #ececec;
 }
+.tiles i.green {
+    background-color: limegreen;
+}
 
 .tiles i::before,
 .tiles i::after {
@@ -104,9 +107,15 @@ body {
 
 i[x="2"] {left: calc(var(--size) * 2)}
 i[x="3"] {left: calc(var(--size) * 3)}
+i[x="4"] {left: calc(var(--size) * 4)}
+i[x="5"] {left: calc(var(--size) * 5)}
+i[x="6"] {left: calc(var(--size) * 6)}
 
 i[y="2"] {top: calc(var(--size) * 2)}
 i[y="3"] {top: calc(var(--size) * 3)}
+i[y="4"] {top: calc(var(--size) * 4)}
+i[y="5"] {top: calc(var(--size) * 5)}
+i[y="6"] {top: calc(var(--size) * 6)}
 
 .cube {
     --size: 50px;
@@ -130,6 +139,7 @@ i[y="3"] {top: calc(var(--size) * 3)}
     background: #ececec;
     /* border: 1px solid #ccc; */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    box-sizing: content-box;
     font-size: 15px;
     display: flex;
     justify-content: center;
