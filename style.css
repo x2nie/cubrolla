@@ -1,0 +1,89 @@
+body {
+    background-color: #03A9F4;
+}
+
+.floor {
+    position: absolute;
+    --wide: 700px;
+    --cone: 100px;
+    width: var(--wide);
+    height: var(--wide);
+    /* background: rgba(255, 255, 0, 0.25);
+    background-image:
+        linear-gradient(45deg, #808080 25%, transparent 25%), 
+        linear-gradient(-45deg, #808080 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #808080 75%),
+        linear-gradient(-45deg, transparent 75%, #808080 75%);
+
+    background-size:20px 20px;    
+    background-position:0 0, 10px 0, 10px -10px, 0px 10px;
+     */
+
+
+    left: 101px;
+    top: 317px;
+    transform-origin: top left;
+    transform-style: preserve-3d;
+    /* transform: rotateY(50deg) rotateX(56deg) rotateZ(-17deg); */
+
+    left: 37px;
+    top: 328px;
+    transform: rotateY(0deg) rotateX(59deg) rotateZ(-37deg);
+}
+.floor::before{
+    content: '';
+    position: absolute;
+    /* inset: 0; */
+    /* border: 5px solid yellow;
+    border-left-color: fuchsia;
+    border-top-color: black;
+    border-right-color: lime; */
+    display: block;
+    box-sizing: content-box;
+    
+    /* https://stackoverflow.com/questions/35361986/css-gradient-checkerboard-pattern */
+    background: repeating-conic-gradient(#1a19197e 0% 25%, transparent 0% 50%) 
+      50% / var(--cone) var(--cone);
+      width: inherit;
+      height: inherit;
+      left: 0;
+      top: 0;
+      transform: translateZ(-25px);
+
+}
+
+
+.cube {
+    --size: 50px;
+    --half: calc( var(--size) / 2);
+    width:  var(--size); /* Lebar kubus */
+    height:  var(--size); /* Tinggi kubus */
+    position: absolute;
+    transform-style: preserve-3d;
+    transform-origin: 0.5 0.5 0.5;
+    /* transform-origin: center; */
+    transform: translate(0px, 0px) rotateX(0deg) rotateY(0deg);
+    transition: transform 0.5s;
+}
+
+.face {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    text-align: center;
+}
+
+.front  { transform: translateZ(var(--half)); }
+.back   { transform: rotateY(180deg) translateZ(var(--half)); }
+.left   { transform: rotateY(-90deg) translateZ(var(--half)); }
+.right  { transform: rotateY(90deg) translateZ(var(--half)); }
+.top    { transform: rotateX(90deg) translateZ(var(--half)); }
+.bottom { transform: rotateX(-90deg) translateZ(var(--half)); }
