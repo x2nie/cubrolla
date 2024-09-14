@@ -48,7 +48,7 @@ body {
     box-sizing: content-box;
 
     /* https://stackoverflow.com/questions/35361986/css-gradient-checkerboard-pattern */
-    background: repeating-conic-gradient(#1a19197e 0% 25%, transparent 0% 50%) 50% / var(--cone) var(--cone);
+    /* background: repeating-conic-gradient(#1a19197e 0% 25%, transparent 0% 50%) 50% / var(--cone) var(--cone); */
 
     width: inherit;
     height: inherit;
@@ -64,6 +64,15 @@ body {
     transform: translateZ(-26px);
     border-color: aquamarine;
 }
+.tiles:before {
+    /* content: ''; */
+    position: absolute;
+    inset: 0;
+    background: #2835931a;
+    /* backdrop-filter: blur(5px); */
+    transform: translateZ(-10px);
+}
+
 
 .tiles i {
     position: absolute;
@@ -78,6 +87,17 @@ body {
 .tiles i.green {
     background-color: limegreen;
 }
+.tiles i.start {
+    background-color: #2196F3;
+}
+.tiles i.glass {
+    background-color: rgba(6, 71, 124, 0.178);
+}
+i.glass b {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(5px);
+}
 
 .tiles i::before,
 .tiles i::after {
@@ -88,6 +108,8 @@ body {
     height: inherit;
     position: absolute;
 }
+.tiles i.nr::after { content: none }
+.tiles i.nl::before { content: none }
 
 /* left */
 .tiles i::before {
@@ -105,17 +127,48 @@ body {
     transform: rotateX(90deg) ;
 }
 
+i[x="0"] {left: calc(var(--size) * 0)}
+i[x="1"] {left: calc(var(--size) * 1)}
+i[x="2"] {left: calc(var(--size) * 2)}
 i[x="2"] {left: calc(var(--size) * 2)}
 i[x="3"] {left: calc(var(--size) * 3)}
 i[x="4"] {left: calc(var(--size) * 4)}
 i[x="5"] {left: calc(var(--size) * 5)}
 i[x="6"] {left: calc(var(--size) * 6)}
+i[x="7"] {left: calc(var(--size) * 7)}
+i[x="8"] {left: calc(var(--size) * 8)}
+i[x="9"] {left: calc(var(--size) * 9)}
+i[x="10"] {left: calc(var(--size) * 10)}
+i[x="11"] {left: calc(var(--size) * 11)}
+i[x="12"] {left: calc(var(--size) * 12)}
+i[x="13"] {left: calc(var(--size) * 13)}
+i[x="14"] {left: calc(var(--size) * 14)}
+i[x="15"] {left: calc(var(--size) * 15)}
+i[x="16"] {left: calc(var(--size) * 16)}
+i[x="17"] {left: calc(var(--size) * 17)}
+i[x="19"] {left: calc(var(--size) * 19)}
+i[x="20"] {left: calc(var(--size) * 20)}
 
+i[y="0"] {top: calc(var(--size) * 0)}
+i[y="1"] {top: calc(var(--size) * 1)}
 i[y="2"] {top: calc(var(--size) * 2)}
 i[y="3"] {top: calc(var(--size) * 3)}
 i[y="4"] {top: calc(var(--size) * 4)}
 i[y="5"] {top: calc(var(--size) * 5)}
 i[y="6"] {top: calc(var(--size) * 6)}
+i[y="7"] {top: calc(var(--size) * 7)}
+i[y="8"] {top: calc(var(--size) * 8)}
+i[y="9"] {top: calc(var(--size) * 9)}
+i[y="10"] {top: calc(var(--size) * 10)}
+i[y="11"] {top: calc(var(--size) * 11)}
+i[y="12"] {top: calc(var(--size) * 12)}
+i[y="13"] {top: calc(var(--size) * 13)}
+i[y="14"] {top: calc(var(--size) * 14)}
+i[y="15"] {top: calc(var(--size) * 15)}
+i[y="16"] {top: calc(var(--size) * 16)}
+i[y="17"] {top: calc(var(--size) * 17)}
+i[y="19"] {top: calc(var(--size) * 19)}
+i[y="20"] {top: calc(var(--size) * 20)}
 
 .cube {
     --size: 50px;
@@ -137,6 +190,7 @@ i[y="6"] {top: calc(var(--size) * 6)}
     width: var(--size);
     height: var(--size);
     background: #ececec;
+    background: #616161;
     /* border: 1px solid #ccc; */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     box-sizing: content-box;
